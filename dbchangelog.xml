@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+  <changeSet id="1" author="create_student">
+    <createTable tableName="student">
+      <column name="id" type="int">
+        <constraints primaryKey="true" nullable="false" />
+      </column>
+      <column name="name" type="varchar(50)">
+        <constraints nullable="false" />
+      </column>
+      <column name="active" type="boolean" defaultValueBoolean="true" />
+    </createTable>
+  </changeSet>
+
+  <changeSet id="2" author="create_employee">
+    <createTable tableName="employee">
+      <column name="id" type="int">
+        <constraints primaryKey="true" nullable="false" />
+      </column>
+      <column name="name" type="varchar(50)">
+        <constraints nullable="false" />
+      </column>
+      <column name="active" type="boolean" defaultValueBoolean="true" />
+    </createTable>
+  </changeSet>
+
+  <changeSet author="liquibase-docs" id="tagDatabase-example">
+    <tagDatabase tag="version_1.3" />
+  </changeSet>
+
+  <changeSet id="3" author="Update-Data">
+    <update schemaName="demo" tableName="department">
+      <column name="name" value="address value" />
+      <where>name='Bhautik'</where>
+    </update>
+  </changeSet>
+
+  <changeSet author="liquibase-docs" id="dropTable">
+    <dropTable cascadeConstraints="true" schemaName="demo" tableName="test" />
+  </changeSet>
+
+</databaseChangeLog>
