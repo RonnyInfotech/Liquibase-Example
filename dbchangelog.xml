@@ -37,8 +37,8 @@
     </update>
   </changeSet>
 
-  <changeSet author="liquibase-docs" id="dropTable">
+  <!-- <changeSet author="liquibase-docs" id="dropTable">
     <dropTable cascadeConstraints="true" schemaName="demo" tableName="test" />
-  </changeSet>
+  </changeSet> -->
 
 </databaseChangeLog>
