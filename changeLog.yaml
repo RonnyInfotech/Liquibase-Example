@@ -1,27 +1,54 @@
 databaseChangeLog:
-  - changeSet:
-      id: 1.0/7
-      author: stivlo
-      comment: "Some comments go here"
-      changes:
-      - insert:
-          tableName: employee
-          columns:
-          - column:
-              name: id
-              value: "1"
-          - column:
-              name: first_name
-              value: "One"
-          - column:
-              name: last_name
-              value: "two"
-      #  - insert:
-      #      tableName: employee
-      #      columns:
-      #      - column:
-      #          name: id
-      #          value: "2"
-      #      - column:
-      #          name: name
-      #          value: "Two"
+    # - preConditions:
+    # - runningAs:
+    #   username: liquibase
+
+    - include:
+          file: test.yaml
+    - include:
+          file: test1.yaml
+
+    - changeSet:
+          id: 1.1
+          author: user_1.0
+          comment: "Create Table"
+          changes:
+              - createTable:
+                    tableName: Employee
+                    columns:
+                        - column:
+                              name: id
+                              type: int
+                              autoIncrement: true
+                              constraints:
+                                  primaryKey: true
+                                  nullable: false
+                        - column:
+                              name: firstname
+                              type: varchar(50)
+
+    - changeSet:
+        id: 1.2
+        author: user_2.0
+        changes:
+            - insert:
+                    tableName: Employee
+                    columns:
+                        - column:
+                            name: firstname
+                            value: John
+            - insert:
+                    tableName: Employee
+                    columns:
+                        - column:
+                            name: firstname
+                            value: Joe
+                #  - insert:
+                #      tableName: employee
+                #      columns:
+                #      - column:
+                #          name: id
+                #          value: "2"
+                #      - column:
+                #          name: name
+                #          value: "Two"

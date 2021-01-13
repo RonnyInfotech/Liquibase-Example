@@ -1,0 +1,33 @@
+databaseChangeLog:
+    - preConditions:
+    - runningAs:
+          username: liquibase
+
+    - changeSet:
+          id: 1
+          author: car_1
+          comment: "Some comments go here"
+          changes:
+              - createTable:
+                    tableName: car
+                    columns:
+                        - column:
+                              name: id
+                              type: int
+                              autoIncrement: true
+                              constraints:
+                                  primaryKey: true
+                                  nullable: false
+                        - column:
+                              name: carname
+                              type: varchar(50)
+    - changeSet:
+          id: 2
+          author: car_2
+          changes:
+              - insert:
+                    tableName: car
+                    columns:
+                        - column:
+                              name: carname
+                              value: Swift
